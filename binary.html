@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Converter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 300px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      color: #666;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background-color: #007bff;
+      color: #fff;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #result {
+      margin-top: 20px;
+      text-align: center;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Number Converter</h2>
+    
+    <label for="inputNumber">Enter Decimal/Binary number:</label>
+    <input type="text" id="inputNumber" placeholder="Enter number">
+
+    <button onclick="convert()">Convert</button>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function convert() {
+      const inputNumber = document.getElementById('inputNumber').value;
+      const resultElement = document.getElementById('result');
+
+      if (/^[01]+$/.test(inputNumber)) {
+        // If input is binary, convert to decimal
+        const decimalNumber = parseInt(inputNumber, 2);
+        resultElement.innerText = `Decimal: ${decimalNumber}`;
+      } else if (/^\d+$/.test(inputNumber)) {
+        // If input is decimal, convert to binary
+        const binaryNumber = (parseInt(inputNumber)).toString(2);
+        resultElement.innerText = `Binary: ${binaryNumber}`;
+      } else {
+        resultElement.innerText = 'Invalid input. Please enter a valid decimal or binary number.';
+      }
+    }
+  </script>
+
+</body>
+</html>
